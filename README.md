@@ -14,5 +14,7 @@ This repository contains scripts and inputs that allow for accessing bicycle and
 # Contact
 Principle Investigator: Josh Roll  josh.f.roll@odot.state.or.us  
 
-![Data Explorer](Data_Explorer_Screenshot.PNG)
+![Data Explorer](Data_Explorer_Screenshot.png)
+
+
 
