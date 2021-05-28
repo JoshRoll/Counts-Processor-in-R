@@ -14,5 +14,5 @@ This repository contains scripts and inputs that allow for accessing bicycle and
 # Contact
 Principle Investigator: Josh Roll  josh.f.roll@odot.state.or.us  
 
-![Data Explorer](www/Data_Explorer_Screenshot.PNG)
-https://maps.dot.gov/BTS/PedestrianFatalityModel/
+![Data Explorer](Data_Explorer_Screenshot.PNG)
+
