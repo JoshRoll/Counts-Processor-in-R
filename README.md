@@ -10,18 +10,17 @@ This script requires an API credential to properly utilize and depending on the 
 ## process_raw_counts_step_2.r  
 This script processes the raw counts data downloaded in Step 1 formatting data elements like date and time and appending helpful temporal details like month and day of week.  
 ## apply_qaqc_step_3.r
-This script applies Quality Assurance and Quality Control (QAQC) steps documented in [this report](https://www.oregon.gov/odot/Programs/ResearchDocuments/SPR_813Final-Nonmotorized.pdf)
+This script applies Quality Assurance and Quality Control (QAQC) steps documented in [this report](https://www.oregon.gov/odot/Programs/ResearchDocuments/SPR_813Final-Nonmotorized.pdf) in Chapter 4.  Suspect daily data are flagged 
+using four different flags including consecutive zeros, data outside expected bounds based on recent hsitory, excessively high values, and days of suspect data from a manually entered set of suspect data.  
+## run_main.r  
+This script is a main script used as a wrapper for the scripts 1 through 3 and also allows for running the basic data visualization script.  This data visualization is previewed in the screen shot below
 
-## run_main.r
+## Data Visualization Preview
+![Data Explorer](www/Data_Explorer_Screenshot.png)
 
-## download_prepare_census_population_data.r
-
-# Data  
 
 # Contact
 Principle Investigator: Josh Roll  josh.f.roll@odot.state.or.us  
-
-![Data Explorer](www/Data_Explorer_Screenshot.png)
 
 
 
