@@ -16,7 +16,7 @@ using four different flags including consecutive zeros, data outside expected bo
 This script is a main script used as a wrapper for the scripts 1 through 3 and also allows for running the basic data visualization script.  This data visualization is previewed in the screen shot below
 
 ### Data Visualization Preview
-![Data Explorer](www/Data_Explorer_Screenshot.png)
+![Data Explorer](Data_Explorer_Screenshot.png)
 
 
 # Contact
