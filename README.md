@@ -15,12 +15,12 @@ using four different flags including consecutive zeros, data outside expected bo
 ## run_main.r  
 This script is a main script used as a wrapper for the scripts 1 through 3 and also allows for running the basic data visualization script.  This data visualization is previewed in the screen shot below
 
-## Data Visualization Preview
+### Data Visualization Preview
 ![Data Explorer](www/Data_Explorer_Screenshot.png)
 
 
 # Contact
-Principle Investigator: Josh Roll  josh.f.roll@odot.state.or.us  
+Josh Roll  josh.f.roll@odot.state.or.us  
 
 
 
