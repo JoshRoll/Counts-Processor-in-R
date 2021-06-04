@@ -56,14 +56,14 @@ print("Starting data splitting and error flagging step.  This process will split
 #Load functions
 #--------------------------
 	#Load processing functions
-	source("Scripts/Functions/Functions.r")
+	source("scripts/Functions.r")
     attach(Functions,warn.conflicts=FALSE)
 		
 #Create script default vectors
 #-----------------------------
 	#Load Parameters file
 	#####################################
-  Parameters.. <- 	read_excel("Documentation/Data Dictionary.xlsx", sheet = "Parameters")
+	Parameters.. <- 	read_excel("Documentation/Data Dictionary.xlsx", sheet = "Parameters")
 
 	#Items from Data Dictionary
 	######################################
@@ -100,10 +100,8 @@ print("Starting data splitting and error flagging step.  This process will split
 	File <- names(File[File%in%max(File)])
 	Load_Daily_Sub_Location_Id.. <- assignLoad(File)
 	
-	#Load count location spatial data
-	######################
 	
-  #Load site infomration
+	#Load site infomration
 	#################
 	#Supporting Data
 	###################
@@ -154,8 +152,7 @@ print("Starting data splitting and error flagging step.  This process will split
 	Daily_Sub_Location_Id.. <- Daily_Sub_Location_Id..[!(Daily_Sub_Location_Id..$User_Type_Desc%in%c("Horse","Undefined")),]
 	#Fix some other issues manually
 	Daily_Sub_Location_Id..$User_Type_Desc[Daily_Sub_Location_Id..$Device_Name%in%"Fern Ridge Path west of Chambers - Users"] <- "User"
-	
-	table(Daily_Sub_Location_Id..$Device_Name[is.na(Daily_Sub_Location_Id..$User_Type_Desc)])
+		
 	#Manual Error Flagging - This process loads an input file with user specified dates, location id, and user and facility type. 
 	#-----------------------
 	#Load manual error flag records
@@ -179,6 +176,7 @@ print("Starting data splitting and error flagging step.  This process will split
 			Daily_Sub_Location_Id..$Facility_Type%in%Facility_Type & Daily_Sub_Location_Id..$User_Type_Desc%in%User)]  <- 5
 	}
 	}
+	
 	#Do a precheck of potential events days. This process determines if days with the highest 95th percentile counts at a given location occur at other locations and if so will flag that 
 	#day as a potential special event.  The day for a given location must also be found to be in the 95th percentile at 3 other locations
 	#----------------------------------------

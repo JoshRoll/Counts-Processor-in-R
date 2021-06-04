@@ -16,8 +16,8 @@
 #Load custom functions
 #--------------------------
 	#Load processing functions
-	# source("Scripts/Functions/Functions.r")
-	# attach(Functions,warn.conflicts=FALSE)
+	source("Scripts/functions.r")
+	attach(Functions,warn.conflicts=FALSE)
 
 #Set up environment conditions
 #----------------------------------
