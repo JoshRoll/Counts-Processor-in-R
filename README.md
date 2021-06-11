@@ -1,7 +1,7 @@
 # Project Summary  
 This repository contains scripts and inputs that allow for accessing bicycle and pedestrian traffic counts data from traffic count device manufacturer Eco Counters Application Programming Interface (API).  These data are prepared for 
-analysis by formatting and adding temporal information as well as applying an automated QAQC process.  These data are then displayed in an R Shiny app for explotatation.  This project supports the Oregon Department of Transportation's 
-non-motorized traffic monitoring efforts.  All the scripts in this directory will run with the test dat ain this repo except for the Step 1 script.  
+analysis by formatting and adding temporal information as well as applying an automated QAQC process.  These data are then displayed in an R Shiny app for exploration.  This project supports the Oregon Department of Transportation's 
+non-motorized traffic monitoring efforts.  All the scripts in this directory will run with the test data in this repo except for the Step 1 script whihc required an paid API credential.  
 
 # Setup  
 1. After downloading the repository be sure to update the API_Credentials.csv in the Supporting Data\API Call Summary Information directory. 
