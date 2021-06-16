@@ -1,10 +1,10 @@
 #Author: Josh Roll Oregon Department of Transportation Research Unit
 #Date: 6/6/2019
-#Name - Master_Bend_Traffic_Counts
+#Name - run_main
 #Description: This script wraps scripts that process traffic count data collected via Eco Counter Products
 #
 #Notes:
-#Script currently only working with R version 3.3.2
+#Script currently only working with R version 3.6.2
 #Setup
 #-------------------
 #1. Create a master working directory. This will be the same as that specified in line 47 below within the setwd())
