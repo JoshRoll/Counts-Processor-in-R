@@ -83,6 +83,8 @@
 
 #Data visualization
 #---------------------------------------------------------
+	#Load data and supporting files
+	source("scripts/viz_app_setup.r")
 	#Run R Shiney app do explore all data with daily and monthly summaries
  	runApp("scripts")
 	

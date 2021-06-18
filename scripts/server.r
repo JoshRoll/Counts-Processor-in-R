@@ -71,7 +71,7 @@ server <- function(input, output, session) {
       #Create a vector  
       Select_Months. <- unique(Daily_Location_Id..$Month[Daily_Location_Id..$Device_Name%in%input$Location_Select & 
                                                                Daily_Location_Id..$Year%in%input$Year_Select_Location_Id])
-      Select_Months. <- month.name[month.name%in%Select_Months.]
+      #Select_Months. <- month.name[month.name%in%Select_Months.]
       # Can use character(0) to remove all choices
       if (is.null(Select_Months. ))Select_Months. <- character(0)
       pickerInput(session,inputId = "Month_Select_Location_Id", label = "Select Month(s)", 
@@ -168,8 +168,8 @@ server <- function(input, output, session) {
       #MAke a copy of selected data for brevity's sake
       dat <- Filtered_Data_Location_Id()
       #Trouble shooting---
-      #print(head(dat))
-      #dat <- Daily_Location_Id..[Daily_Location_Id..$Device_Name%in%"HAWTHORNE BR north side",]
+      print(nrow(dat))
+     # dat <- Daily_Location_Id..[Daily_Location_Id..$Device_Name%in%"HAWTHORNE BR north side" & Daily_Location_Id..$Year =="2020" & Daily_Location_Id..$Month =="August",]
       #dat <- dat[dat$Month%in%"March",]
       #Check to make sure data is present 
       req(nrow(dat) > 0)
@@ -178,6 +178,7 @@ server <- function(input, output, session) {
      # dat$Date <- as.character(dat$Date)
       #Look up descriptive locaiton name
       Location_Description <-unique(dat$Device_Name)
+      print(Location_Description)
         #Initialze chart
       Daily_Plot <- ggplot(dat,aes(x = Date, y = Counts, fill = Is_Weekday), aes_string(label = "Error_Code_Desc",label2 = "Potential_Special_Event",
                  label3 = Is_Holiday,label4 = "Weekday", label5 = "Date"))  +   	
@@ -185,7 +186,7 @@ server <- function(input, output, session) {
                 theme(axis.text.x = element_text(angle = 60, vjust = 0.5, hjust=1)) +
                  facet_wrap(~User_Type_Desc, nrow = 3, scales = "free") +
                  theme(text = element_text(size=12), axis.text.x = element_text(angle=90, vjust=.5)) +
-                 ggtitle(Location_Description) +
+                 ggtitle(paste(Location_Description," Daily Counts",sep="")) +
                 scale_y_continuous(labels=comma) + 
                  ylab("")  +  
                  xlab("")  +  
@@ -195,14 +196,18 @@ server <- function(input, output, session) {
       #Logic for deciding axis labels
       #if(nrow(dat< 180))
         #ggplotyl(Daily_Plot + scale_x_date(breaks = function(x) seq.Date(from = min(x), to = max(x),by = "1 month")))
-      if( nrow(dat) < 360 ){
+      if( nrow(dat) <= 360 ){
         ggplotly(Daily_Plot + scale_x_date(breaks = function(x) seq.Date(from = min(x), to = max(x),by = "1 month")),tooltip = c("x","y","fill","text"))
       }
-     if( nrow(dat) > 360 & nrow(dat) <720 ){
+      print(nrow(dat) > 360 & nrow(dat) <=720 )
+      if( nrow(dat) > 360 & nrow(dat) <=720 ){
+        print("nrow(dat) > 360 & nrow(dat) <=720")
         ggplotly(Daily_Plot + scale_x_date(breaks = function(x) seq.Date(from = min(x), to = max(x),by = "3 month")),tooltip = c("x","y","fill","text"))
+      
       }
       if( nrow(dat) > 720 ){
         ggplotly(Daily_Plot + scale_x_date(breaks = function(x) seq.Date(from = min(x), to = max(x),by = "1 year")),tooltip = c("x","y","fill","text"))
+      
       }
   
       
@@ -220,7 +225,7 @@ server <- function(input, output, session) {
       #Trouble shooting---
       #print(head(dat))
       #dat <- Daily_Location_Id..[Daily_Location_Id..$Device_Name%in%"HAWTHORNE BR north side",]
-      dat <- dat %>% group_by(Device_Name,User_Type_Desc, Year, Month) %>% summarise(Counts = sum(Counts), Days_of_Data = length(Date)) %>% 
+      dat <- dat %>% group_by(Device_Name,User_Type_Desc, Year, Month) %>% summarise(Counts = sum(Counts), Days_of_Data = length(Date)) %>% ungroup() %>%
         mutate(Month_Year = paste(Month, Year, sep ="-")) 
       Years. <- unique(dat$Year) 
       Months. <- unique(dat$Month) 
@@ -244,7 +249,7 @@ server <- function(input, output, session) {
           scale_y_continuous(labels=comma) + 
           facet_wrap(~User_Type_Desc, nrow = 2, scales = "free") +
           theme(text = element_text(size=12), axis.text.x = element_text(angle=90, vjust=.5)) +
-          ggtitle(Location_Description) +
+        ggtitle(paste(Location_Description," Monthly Counts",sep="")) +
           ylab("")  +  
           xlab("")  +  
           labs(fill = "Month") + 
